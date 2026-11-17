@@ -1,0 +1,310 @@
+/* ==========================================================================
+   Hero 首屏
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--nav-h) + 40px) 0 64px;
+  overflow: hidden;
+}
+
+/* 背景网格纹理 */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.35;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at 30% 40%, #000 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse at 30% 40%, #000 0%, transparent 72%);
+}
+
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 5.4vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.hero-title .en {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.42em;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 14px;
+}
+
+.hero-role {
+  margin-top: 20px;
+  font-size: 1.25rem;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.hero-tagline {
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.hero-desc {
+  margin-top: 20px;
+  color: var(--ink-soft);
+  max-width: 520px;
+  font-size: 1rem;
+}
+
+/* 关键词标签 */
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.hero-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  padding: 6px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: var(--white);
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.hero-tags span:hover {
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+
+/* 关键数据指标 */
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 32px;
+  max-width: 480px;
+}
+
+.metric {
+  border-left: 3px solid var(--accent);
+  padding: 8px 0 8px 16px;
+  background: var(--white);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.metric .metric-value {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.metric .metric-label {
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+  margin-top: 4px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease),
+    background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ghost {
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* 右侧视觉卡片 */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-portrait {
+  position: relative;
+  width: min(340px, 78vw);
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 抽象个人视觉卡片（无真实头像时启用） */
+.hero-portrait.abstract {
+  background: linear-gradient(150deg, var(--navy) 0%, #2c4a6e 55%, var(--accent) 130%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-portrait.abstract .monogram {
+  font-family: var(--font-serif);
+  font-size: 7rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 700;
+}
+
+/* 漂浮数据小卡 */
+.hero-float {
+  position: absolute;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 14px 18px;
+  font-size: 0.8rem;
+}
+
+.hero-float .float-title {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.hero-float .float-value {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 4px;
+}
+
+.hero-float .float-delta {
+  color: var(--accent-deep);
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.hero-float.f1 {
+  top: 8%;
+  right: -12px;
+}
+
+.hero-float.f2 {
+  bottom: 10%;
+  left: -14px;
+}
+
+/* 渐入动画 */
+.hero .fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s var(--ease) forwards;
+}
+
+.hero .fade-up.d1 { animation-delay: 0.05s; }
+.hero .fade-up.d2 { animation-delay: 0.15s; }
+.hero .fade-up.d3 { animation-delay: 0.25s; }
+.hero .fade-up.d4 { animation-delay: 0.35s; }
+.hero .fade-up.d5 { animation-delay: 0.45s; }
+.hero .fade-up.d6 { animation-delay: 0.55s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-visual {
+    order: -1;
+  }
+  .hero-portrait {
+    width: min(280px, 70vw);
+  }
+  .hero-float.f1 {
+    right: 4%;
+  }
+  .hero-float.f2 {
+    left: 4%;
+  }
+  .hero-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

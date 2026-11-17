@@ -1,0 +1,214 @@
+/* ==========================================================================
+   通用区块 + About
+   ========================================================================== */
+
+.section {
+  padding: 96px 0;
+}
+
+.section--alt {
+  background: var(--surface);
+}
+
+.section-head {
+  max-width: 760px;
+  margin-bottom: 52px;
+}
+
+/* About 双栏 */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.about-panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+}
+
+.about-panel h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+}
+
+.about-panel h3 .ico {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--surface);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.about-block {
+  margin-bottom: 26px;
+}
+
+.about-block:last-child {
+  margin-bottom: 0;
+}
+
+.about-block .block-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 12px;
+}
+
+.school-line {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.school-line .muted {
+  color: var(--ink-mute);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.course-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 0.86rem;
+}
+
+.course-item .score {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent-deep);
+}
+
+.honor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.honor-list span {
+  padding: 6px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  background: var(--warm-white);
+}
+
+/* 技能分组（不用进度条） */
+.skill-group {
+  margin-bottom: 24px;
+}
+
+.skill-group:last-child {
+  margin-bottom: 0;
+}
+
+.skill-group .group-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 12px;
+}
+
+.skill-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--warm-white);
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.skill-item:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.skill-item .skill-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  min-width: 88px;
+  color: var(--ink);
+}
+
+.skill-item .skill-desc {
+  font-size: 0.84rem;
+  color: var(--ink-mute);
+}
+
+.skill-item .skill-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--navy);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.skill-item .skill-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* 语言与证书 */
+.cert-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cert-chips span {
+  padding: 6px 14px;
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding: 64px 0;
+  }
+}

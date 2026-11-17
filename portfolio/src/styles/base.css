@@ -1,0 +1,200 @@
+/* ==========================================================================
+   设计令牌 —— Editorial Portfolio + Business Analytics Dashboard
+   ========================================================================== */
+
+:root {
+  /* 色彩 */
+  --ink: #1f2937;            /* 深墨色主文字 */
+  --ink-soft: #4b5563;       /* 次级文字 */
+  --ink-mute: #6b7280;       /* 弱化文字 */
+  --navy: #1e3a5f;           /* 藏蓝色强调 */
+  --accent: #c96f3b;         /* 低饱和橘棕强调色 */
+  --accent-deep: #a85a2c;    /* 橘棕深色 */
+  --warm-white: #faf8f5;     /* 暖白背景 */
+  --surface: #f3f0eb;        /* 浅米色表面 */
+  --gray-blue: #e7eaef;      /* 灰蓝辅助 */
+  --line: #e5e2dc;           /* 分隔线 */
+  --white: #ffffff;
+
+  /* 数据可视化色板（沿用橘棕主色 + 灰蓝辅助，保持统一） */
+  --chart-1: #c96f3b;
+  --chart-2: #1e3a5f;
+  --chart-3: #8a97a5;
+  --chart-4: #d9b08c;
+  --chart-5: #5c6f85;
+
+  /* 字体 */
+  --font-sans: "Inter", "PingFang SC", "Microsoft YaHei", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: "Georgia", "Songti SC", "SimSun", serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+
+  /* 尺寸与圆角 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --container: 1160px;
+  --nav-h: 68px;
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px rgba(31, 41, 55, 0.06);
+  --shadow-md: 0 4px 16px rgba(31, 41, 55, 0.08);
+  --shadow-lg: 0 12px 40px rgba(31, 41, 55, 0.12);
+
+  /* 动效 */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--warm-white);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* 无障碍：减少动态效果 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 图片放大 lightbox */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+#lightbox.is-open {
+  display: flex;
+}
+
+#lightbox .lb-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 24, 30, 0.86);
+  backdrop-filter: blur(4px);
+}
+
+#lightbox .lb-img {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  object-fit: contain;
+}
+
+#lightbox .lb-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s var(--ease);
+}
+
+#lightbox .lb-close:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+#lightbox .lb-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* 进入视口渐入 */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 分区标题规范 */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.section-sub {
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin-top: 14px;
+  font-size: 1.02rem;
+}
